@@ -37,30 +37,39 @@ class _HomePageState extends State<HomePage> {
           makepage(
             image: 'assets/image/sydney.jpg',
             title: 'SYDNEY',
-            description: 'My Name Is Ibrahim Tariq and I Am From Sydney ',
+            description: 'sydney, Australia’s bustling capital, is known for its iconic landmarks like the Sydney Opera House and Harbour Bridge. With stunning beaches, a vibrant arts scene, and a rich blend of history and modern culture, it’s a city that offers something for everyone—from scenic harbor views to dynamic urban experiences.',
+            page: '1',
+            count: '4.0'
             ),
           makepage(
           image: 'assets/image/UAE.jpg',
           title: 'DUBAI',
-          description: 'My Name Is Ibrahim Tariq and I Am From Dubai',
+          description: 'Dubai, a gleaming metropolis in the UAE, is famous for its futuristic skyline, luxury shopping, and world-class attractions like the Burj Khalifa and Palm Jumeirah. Known for blending modern innovation with rich cultural heritage, Dubai offers a unique mix of towering skyscrapers, desert adventures, and vibrant markets.',
+          page: '2',
+          count: '5.0'
           ),
           makepage(
           image: 'assets/image/newyork.jpg',
           title: 'NEW YORK',
-          description: 'My Name Is Ibrahim Tariq and I Am From New York',
+          description: 'New York City, the "Big Apple," is a global hub of culture, art, and business, renowned for its iconic landmarks like the Statue of Liberty, Times Square, and Central Park. With its bustling streets, diverse neighborhoods, and vibrant energy, New York offers endless experiences, from world-class museums and Broadway shows to unique culinary adventures.',
+          page: '3',
+          count: '3.0'
           ),
           makepage(
           image: 'assets/image/peakpx (2).jpg',
           title: 'NORWAY',
-          description: 'My Name Is Ibrahim Tariq and I Am From Norway',
+          description: 'Norway, a Scandinavian gem, is known for its breathtaking natural landscapes, from stunning fjords and towering mountains to the magical Northern Lights. With a rich Viking history and a strong commitment to sustainability, Norway blends tradition with modern living. Its picturesque cities, like Oslo and Bergen, offer a mix of cultural experiences and outdoor adventures.',
+          page: '4',
+          count: '4.0'
           ),
         ],
       ),
 
     );
   }
-  Widget makepage({required String image, title, description})
+  Widget makepage({required String image, title, description, required String page, required String count})
   {
+    
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -94,7 +103,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.baseline,
               textBaseline: TextBaseline.alphabetic,
               children: <Widget>[
-                Text('1', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
+                Text(page, style: const TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
                 Text('/4', style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),)
               ],
             ),
@@ -111,27 +120,14 @@ class _HomePageState extends State<HomePage> {
 
                   Row(
                     children: <Widget>[
+                      for(int i=0;i<(title=='SYDNEY'? 4:title=='NEW YORK'? 3:title=='DUBAI'? 5:5);i++)
                       Container(
                         margin: EdgeInsets.only(right: 5),
                         child: Icon(Icons.star, color: Colors.yellow, size: 15,),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.star, color: Colors.yellow, size: 15,),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.star, color: Colors.yellow, size: 15,),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.star, color: Colors.yellow, size: 15,),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.star, color: Colors.yellow, size: 15,),
-                      ),
-                      Text('4.0', style: TextStyle(color: Colors.white),),
+
+                      Text(count, style: TextStyle(color: Colors.white),),
+
                       Text('(2000)', style: TextStyle(color: Colors.white, fontSize: 13))
                     ],
                    ),
@@ -146,6 +142,11 @@ class _HomePageState extends State<HomePage> {
                     height: 20,
                    ),
                    Text('READ MORE', style: TextStyle(color: Colors.white),),
+
+                    SizedBox(
+                    height: 30,
+                   ),
+
                  ],
                 )
               )
